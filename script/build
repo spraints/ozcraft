@@ -1,0 +1,18 @@
+#!/bin/bash
+#/ Usage: script/build DEST
+
+set -e
+set -o nounset
+
+if [ $# -ne 1 ]; then
+  cat "$0" | grep ^#/ | cut -c4 -
+  exit 1
+fi
+
+if [ ! -d "$1" ]; then
+  echo "error: $1: not a directory"
+  exit 1
+fi
+
+dest=$1
+cp -fv src/index.html $dest/index.html
